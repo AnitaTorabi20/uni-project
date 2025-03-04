@@ -15,8 +15,9 @@ public class presentedCourse {
         this.professorID = professorID;
         this.maxCapacity = maxCapacity;
         this.studentIds = new ArrayList<>(maxCapacity);
-        this.id = presentedCoursesList.size();
+
         presentedCoursesList.add(this);
+        this.id = presentedCoursesList.size();
     }
     public static presentedCourse findByID(int id) {
         for (presentedCourse PresentedCourse : presentedCoursesList) {

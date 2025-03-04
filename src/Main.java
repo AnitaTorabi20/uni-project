@@ -18,6 +18,10 @@ public class Main {
         student student2 = new student(person2.id, 401, math.id);
         student student3 = new student(person3.id, 402, computerScience.id);
 
+        student1.setStudentCode();
+        student2.setStudentCode();
+        student3.setStudentCode();
+
         System.out.println(person1.name + " " + student1.studentID);
         System.out.println(person2.name + " " + student2.studentID);
         System.out.println(person3.name + " " + student3.studentID);
@@ -29,14 +33,15 @@ public class Main {
         System.out.println(person4.name + " " + person4.id);
         System.out.println(person5.name + " " + person5.id);
 
-        course Math = new course("math",3);
-        course AP = new course("AP",4);
-        course BP = new course("BP",4);
+        course Math = new course("math ",3);
+        course AP = new course("AP ",4);
+        course BP = new course("BP ",4);
 
 
         presentedCourse course1 = new presentedCourse(1, professor1.id, 30);
-        presentedCourse course2 = new presentedCourse(2, 1, 25);
-        presentedCourse course3 = new presentedCourse(3, 2, 20);
+        presentedCourse course2 = new presentedCourse(2, professor1.id, 25);
+        presentedCourse course3 = new presentedCourse(3, professor2.id, 20);
+
 
         course1.addStudent(student1.id);
         course1.addStudent(student2.id);
@@ -46,19 +51,22 @@ public class Main {
         course3.addStudent(student3.id);
 
 
+
+
         transcript transcript1 = new transcript(student1.id);
         transcript transcript2 = new transcript(student2.id);
         transcript transcript3 = new transcript(student3.id);
 
-        transcript1.setGrade(course1.courseID, 18.5);
-        transcript1.setGrade(course2.courseID, 16.0);
+        transcript1.setGrade(course1.courseID, 18.0);
+        transcript1.setGrade(course2.courseID, 18.0);
 
-        transcript2.setGrade(course1.courseID, 17.0);
+
+        transcript2.setGrade(course1.courseID, 12.0);
         transcript2.setGrade(course2.courseID, 19.0);
 
         transcript3.setGrade(course2.courseID, 15.5);
         transcript3.setGrade(course3.courseID, 20.0);
-
+//        System.out.println(transcript3.transcript);
 
         transcript1.printTranscript();
         transcript2.printTranscript();

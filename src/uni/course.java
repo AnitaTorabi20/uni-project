@@ -11,8 +11,9 @@ public class course {
     public course(String title, int units){
         this.title = title;
         this.units = units;
-        this.id = courseList.size();
         courseList.add(this);
+        this.id = courseList.size();
+
     }
     public static course findByID(int id) {
         for (course Course : courseList) {

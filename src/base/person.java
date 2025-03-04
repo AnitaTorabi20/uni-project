@@ -6,7 +6,7 @@ public class person {
     public String name;
     public String nationalID;
     public static ArrayList<person> personList = new ArrayList<>();
-    private static int nextID = 1;
+    public static int nextID = 1;
 
     public person(String name, String nationalID){
         this.id = nextID++;

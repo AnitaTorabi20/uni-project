@@ -16,10 +16,9 @@ public class student {
         this.personID = personID;
         this.enterenceYear = entranceYear;
         this.majorID = majorID;
-        this.id = idCounter++;
-
         setStudentCode();
         studentsList.add(this);
+        id = studentsList.size();
     }
 
     public static student findByID(int id){
@@ -32,12 +31,6 @@ public class student {
     }
 
      public void setStudentCode(){
-        int count = 0;
-        for (student s : studentsList){
-            if (s.majorID == this.majorID && s.enterenceYear == this.enterenceYear){
-                count++;
-            }
-        }
-        this.studentID = enterenceYear + "" + majorID + "" + String.format("%03d", count);
+        this.studentID = enterenceYear + "" + majorID + "" + id;
      }
 }

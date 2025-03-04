@@ -14,19 +14,32 @@ public class transcript {
         this.transcript = new HashMap<>();
     }
     public void setGrade(int presentedCourseID, double grade){
-        if (presentedCourse.findByID(studentID) != null){
+        presentedCourse PresentedCourse = presentedCourse.findByID(presentedCourseID);
+        if (PresentedCourse != null) {
             transcript.put(presentedCourseID, grade);
         }
 
     }
 
     public void printTranscript(){
-        person person1 = person.findByID(studentID);
+        person Person = person.findByID(studentID);
 
-        System.out.println( person1.name );
+        if (Person != null) {
+            System.out.println( Person.name);
+        } else {
+            System.out.println( studentID );
+            return;
+        }
 
         for (Integer courseID : transcript.keySet()){
-            System.out.println(transcript.get(courseID));
+         //   System.out.println(courseID);
+            presentedCourse currentCourse2 = presentedCourse.findByID(courseID);
+            course currentCourse = course.findByID(courseID);
+            if (currentCourse != null) {
+                System.out.println( currentCourse.title + transcript.get(currentCourse2.id));
+            } else {
+                System.out.println( courseID );
+            }
 
         }
     }
@@ -35,9 +48,12 @@ public class transcript {
         int totalUnits = 0;
 
         for (Integer courseID : transcript.keySet()) {
-            int units = 3;
-            totalGradePoints += transcript.get(courseID) * units;
-            totalUnits += units;
+            course currentCourse = course.findByID(courseID);
+            if (currentCourse != null){
+                int units = currentCourse.units;
+                totalGradePoints += transcript.get(courseID) * units;
+                totalUnits += units;
+            }
         }
 
         return totalGradePoints / totalUnits;
